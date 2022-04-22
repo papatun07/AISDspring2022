@@ -19,6 +19,14 @@ public class HashMap<K, V> extends HashTable<K, V> {
         }
         table[getIndex(key)].add(pair);
     }
+    
+    public V get(K key) {
+        for (Pair<K,V> pair : table[getIndex(key)]) {
+            if (pair.getKey().equals(key))
+                return pair.getValue();
+        }
+        return null;
+    }
 
     public void del(K key) {
         ListIterator<Pair<K, V>> i2 = table[getIndex(key)].listIterator();
